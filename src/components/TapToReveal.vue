@@ -33,29 +33,29 @@ export default {
             "What is the utils needed to connect ur phone to an headset?",
           answer: "Bluetooth",
           revealed: false,
-          image: "/src/assets/bluetooth.svg",
-          imageQue: "/src/assets/seal-question.svg",
+          image: "/bluetooth.svg",
+          imageQue: "/seal-question.svg",
         },
         {
           question: "Capital of France?",
           answer: "Paris",
           revealed: false,
-          image: "/src/assets/activity.svg",
-          imageQue: "/src/assets/seal-question.svg",
+          image: "/activity.svg",
+          imageQue: "/seal-question.svg",
         },
         {
           question: "Capital of France?",
           answer: "Paris",
           revealed: false,
-          image: "/src/assets/activity.svg",
-          imageQue: "/src/assets/seal-question.svg",
+          image: "/activity.svg",
+          imageQue: "/seal-question.svg",
         },
         {
           question: "Capital of France?",
           answer: "Paris",
           revealed: false,
-          image: "/src/assets/activity.svg",
-          imageQue: "/src/assets/seal-question.svg",
+          image: "/activity.svg",
+          imageQue: "/seal-question.svg",
         },
       ],
     };
@@ -76,8 +76,7 @@ export default {
   column-gap: 1rem;
   row-gap: 1rem;
   width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 .card {
@@ -122,10 +121,11 @@ export default {
   transform: rotateY(360deg);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 750px) {
   .card-container {
-    grid-template-columns: 1fr; /* One column layout */
-    margin-left: 50px;
+    grid-template-columns: 1fr;
+    margin-left: 60px;
+    margin-top: 10px;
   }
 }
 </style>

@@ -1,7 +1,8 @@
 <template>
-  <div class="app">
+  <div>
     <TapToReveal />
     <SwipeQuiz />
+    <!-- <h1>Hello</h1> -->
   </div>
 </template>
 

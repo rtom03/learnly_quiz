@@ -157,7 +157,6 @@ export default {
   height: 300px;
   margin: 0 1.5rem;
   justify-content: center;
-  margin-right: 70px;
 }
 .card {
   background: linear-gradient(to bottom right, #38bdf8, #06b6d4);
@@ -218,26 +217,17 @@ export default {
 }
 
 @media (max-width: 600px) {
-  .card {
-    padding: 3px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 0;
-    left: 0;
+  .instruction {
+    font-size: 0.95rem;
+    color: #334155;
     width: 80%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s ease;
   }
-  .progress-dots span {
-    width: 4px;
-    height: 4px;
-    margin-left: 8px;
-    background: #cbd5e1;
-    border-radius: 4px;
+  .card-stack {
+    position: relative;
+    width: 220px;
+    height: 300px;
+    margin: 0 1.5rem;
+    justify-items: center;
   }
 }
 </style>
