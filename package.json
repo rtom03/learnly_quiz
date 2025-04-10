@@ -19,8 +19,8 @@
     "vite": "^6.2.5"
   },
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "npm install -g vite && vite",
+    "build": "npm install -g vite && vite build",
     "preview": "npx vite preview"
   },
   "engines": {
