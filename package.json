@@ -23,6 +23,9 @@
     "build": "vite build",
     "preview": "npx vite preview"
   },
+  "engines": {
+    "node": "18.x"
+  },
   "author": "",
   "license": "ISC",
   "description": ""

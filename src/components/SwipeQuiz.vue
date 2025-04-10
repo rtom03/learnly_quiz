@@ -16,21 +16,33 @@
       correct change.
     </p>
 
-    <div class="card-container">
-      <div v-if="currentIndex < cards.length" class="card">
-        {{ cards[currentIndex].question }}
-      </div>
-
-      <div v-else class="completed-message">
-        <p>Great Job</p>
-        <button class="try-again" @click="restart">Try Again</button>
-        <button class="next-btn">Next →</button>
-      </div>
+    <div class="swipe-labels">
+      <span>← Physical Change</span>
+      <span>Chemical Change →</span>
     </div>
 
-    <div v-if="currentIndex < cards.length" class="actions">
-      <button @click="handleSwipe('left')">← Physical Change</button>
-      <button @click="handleSwipe('right')">Chemical Change →</button>
+    <div class="card-swipe-area">
+      <button class="arrow left" @click="handleSwipe('left')">←</button>
+
+      <div class="card-stack">
+        <div
+          v-for="(card, index) in visibleCards"
+          :key="index"
+          class="card"
+          :style="{ zIndex: cards.length - index }"
+        >
+          <div class="icon">🔥</div>
+          <p>{{ card.question }}</p>
+        </div>
+      </div>
+
+      <button class="arrow right" @click="handleSwipe('right')">→</button>
+    </div>
+
+    <div v-if="currentIndex >= cards.length" class="completed-message">
+      <p>Great Job</p>
+      <button class="try-again" @click="restart">Try Again</button>
+      <button class="next-btn">Next →</button>
     </div>
 
     <div v-if="showTryAgain" class="try-again-message">
@@ -48,10 +60,15 @@ export default {
       showTryAgain: false,
       cards: [
         { question: "Melting ice", correctDirection: "left" },
-        { question: "Burning wood", correctDirection: "right" },
+        { question: "Burning paper", correctDirection: "right" },
         { question: "Boiling water", correctDirection: "left" },
       ],
     };
+  },
+  computed: {
+    visibleCards() {
+      return this.cards.slice(this.currentIndex);
+    },
   },
   methods: {
     handleSwipe(direction) {
@@ -71,12 +88,13 @@ export default {
 
 <style scoped>
 .quiz-wrapper {
-  max-width: 500px;
+  max-width: 600px;
   margin: auto;
   text-align: center;
-  padding: 1rem;
-  font-family: sans-serif;
-  margin-bottom: 200px;
+  font-family: "Segoe UI", sans-serif;
+  padding: 2rem 1rem;
+  margin-bottom: 250px;
+  align-items: center;
 }
 
 .lesson-header {
@@ -90,52 +108,82 @@ export default {
   display: inline-block;
   width: 12px;
   height: 4px;
-  margin-left: 5px;
+  margin-left: 4px;
   background: #cbd5e1;
   border-radius: 4px;
 }
-
 .progress-dots .active {
   background: #1e40af;
 }
 
 .instruction {
-  margin: 1rem 0;
   font-size: 0.95rem;
   color: #334155;
+  margin: 1rem 0;
 }
 
-.card-container {
-  margin: 2rem 0;
-}
-
-.card {
-  background: #f1f5f9;
-  padding: 2rem;
-  border-radius: 12px;
-  font-size: 1.2rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.actions {
+.swipe-labels {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
-  margin-top: 2rem;
+  margin: 0.5rem 0 0.2rem;
+  font-size: 0.85rem;
+  color: #475569;
 }
 
-.actions button {
-  flex: 1;
-  padding: 1rem;
-  font-size: 0.9rem;
+.card-swipe-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 1rem 0 2rem;
+}
+
+.arrow {
+  background-color: #e2e8f0;
   border: none;
   border-radius: 8px;
-  background-color: #e2e8f0;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
+  color: #1e293b;
+}
+.arrow:hover {
+  background-color: #cbd5e1;
 }
 
-.actions button:hover {
-  background-color: #cbd5e1;
+.card-stack {
+  position: relative;
+  width: 220px;
+  height: 300px;
+  margin: 0 1.5rem;
+  justify-content: center;
+  margin-right: 70px;
+}
+.card {
+  background: linear-gradient(to bottom right, #38bdf8, #06b6d4);
+  color: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.card .icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.completed-message {
+  margin-top: 2rem;
 }
 
 .completed-message p {
@@ -167,5 +215,29 @@ export default {
   padding: 1rem;
   border-radius: 8px;
   color: #b91c1c;
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 3px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+  .progress-dots span {
+    width: 4px;
+    height: 4px;
+    margin-left: 8px;
+    background: #cbd5e1;
+    border-radius: 4px;
+  }
 }
 </style>

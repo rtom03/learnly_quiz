@@ -121,4 +121,11 @@ export default {
 .card.flipped .back {
   transform: rotateY(360deg);
 }
+
+@media (max-width: 600px) {
+  .card-container {
+    grid-template-columns: 1fr; /* One column layout */
+    margin-left: 50px;
+  }
+}
 </style>
