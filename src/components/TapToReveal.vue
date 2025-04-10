@@ -44,15 +44,15 @@ export default {
           imageQue: "/seal-question.svg",
         },
         {
-          question: "Capital of France?",
-          answer: "Paris",
+          question: "Capital of Nigeria?",
+          answer: "Abuja",
           revealed: false,
           image: "/activity.svg",
           imageQue: "/seal-question.svg",
         },
         {
-          question: "Capital of France?",
-          answer: "Paris",
+          question: "Capital of England?",
+          answer: "London",
           revealed: false,
           image: "/activity.svg",
           imageQue: "/seal-question.svg",
@@ -76,7 +76,7 @@ export default {
   column-gap: 1rem;
   row-gap: 1rem;
   width: 100%;
-  /* margin: 0 auto; */
+  margin: 20px auto;
 }
 
 .card {
